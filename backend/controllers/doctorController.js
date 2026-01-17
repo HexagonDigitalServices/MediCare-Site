@@ -52,15 +52,6 @@ function normalizeDocForClient(raw = {}) {
 }
 
 // createDoctor
-    let imageUrl = body.imageUrl || null;
-    let imagePublicId = body.imagePublicId || null;
-    if (req.file?.path) {
-      const uploaded = await uploadToCloudinary(req.file.path, "doctors");
-      imageUrl = uploaded?.secure_url || uploaded?.url || imageUrl;
-      imagePublicId = uploaded?.public_id || uploaded?.publicId || imagePublicId;
-    }
-
-    const schedule = parseScheduleInput(body.schedule);
     const doc = new Doctor({
       email: emailLC,
       password: body.password,
@@ -80,7 +71,7 @@ function normalizeDocForClient(raw = {}) {
       rating: body.rating !== undefined ? Number(body.rating) : 0,
     });
     
-
+//
 export const getDoctors = async (req, res) => {
   try {
     const { q = "", limit: limitRaw = 200, page: pageRaw = 1 } = req.query;
