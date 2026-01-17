@@ -1,0 +1,20 @@
+//Doctor Testing
+{
+  "email": "dr1@gmail.com",
+  "password": "123456",
+  "name": "Dr. Rahul Sharma",
+  "specialization": "Cardiologist",
+  "experience": "10 years",
+  "qualifications": "MBBS, MD (Cardiology)",
+  "location": "Delhi",
+  "about": "Experienced heart specialist",
+  "fee": 500,
+  "availability": "Available",
+  "schedule": {
+    "2026-01-20": ["10:00 AM", "10:30 AM", "11:00 AM"],
+    "2026-01-21": ["02:00 PM", "02:30 PM"]
+  },
+  "success": "98%",
+  "patients": "5000+",
+  "rating": 4.7
+}
