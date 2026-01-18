@@ -18,3 +18,18 @@
   "patients": "5000+",
   "rating": 4.7
 }
+
+//Service Testing
+{
+  "name": "Full Body Health Checkup",
+  "about": "Complete body diagnostic service",
+  "shortDescription": "Blood test + X-Ray + Doctor consultation",
+  "price": 999,
+  "availability": "available",
+  "instructions": ["Come empty stomach", "Carry previous reports"],
+  "slots": [
+    "20 Jan 2026 • 10:00 AM",
+    "20 Jan 2026 • 10:30 AM",
+    "21 Jan 2026 • 02:00 PM"
+  ]
+}
