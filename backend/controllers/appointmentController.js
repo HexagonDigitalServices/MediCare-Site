@@ -273,6 +273,10 @@ function resolveClerkUserId(req) {
       update.rescheduledTo = { date: body.date, time: body.time };
     }
 
+// get Stats
+const paidAgg = await Appointment.aggregate([{ $match: { "payment.status": "Paid" } }, { $group: { _id: null, total: { $sum: "$fees" } } }]);
+    const revenue = (paidAgg[0] && paidAgg[0].total) || 0;
+
 //getAppointmentsByDoctor
     const { mobile, status, search = "", limit: limitRaw = 50, page: pageRaw = 1 } = req.query;
     const limit = Math.min(200, Math.max(1, parseInt(limitRaw, 10) || 50));
