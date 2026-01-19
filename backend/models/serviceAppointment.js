@@ -1,10 +1,4 @@
 {
-  createdBy: {
-    type: String,
-      default: null,
-      index: true,
-    },
-
   patientName: {
     type: String,
       required: true,
