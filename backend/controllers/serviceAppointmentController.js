@@ -293,6 +293,13 @@ function resolveClerkUserId(req) {
       }
     }
 
+// cancelServiceAppointment
+    if (!appt) return res.status(404).json({ success: false, message: "Not found" });
+    if (appt.status === "Completed") return res.status(400).json({ success: false, message: "Cannot cancel a completed appointment" });
+
+    appt.status = "Canceled";
+    if (appt.payment) appt.payment.status = appt.payment.status === "Confirmed" ? "Canceled" : "Pending";
+
 //getServiceAppointmentStats 
       {
         $lookup: { from: "serviceappointments", localField: "_id", foreignField: "serviceId", as: "appointments" },
