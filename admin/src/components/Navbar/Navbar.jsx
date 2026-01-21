@@ -1,13 +1,3 @@
-const [open, setOpen] = useState(false);
-  const navInnerRef = useRef(null);
-  const indicatorRef = useRef(null);
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const clerk = useClerk?.();
-  const { getToken, isLoaded: authLoaded } = useAuth();
-  const { isSignedIn, user, isLoaded: userLoaded } = useUser();
-
   const moveIndicator = useCallback(() => {
     const container = navInnerRef.current;
     const ind = indicatorRef.current;
