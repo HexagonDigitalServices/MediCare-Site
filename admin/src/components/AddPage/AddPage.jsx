@@ -414,3 +414,18 @@ function formatDateISO(iso) {
               ))}
             </div>
           </div>
+
+    {/* TOAST */}
+      {toast.show && (
+        <div
+          className={s.toastContainer + " " + 
+            (toast.type === "success" ? s.toastSuccess : s.toastError)}
+        >
+          {toast.type === "success" ? (
+            <CheckCircle size={22} />
+          ) : (
+            <XCircle size={22} />
+          )}
+          <span>{toast.message}</span>
+        </div>
+      )}
