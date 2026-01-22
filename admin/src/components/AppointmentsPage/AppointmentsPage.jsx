@@ -27,6 +27,7 @@ function dateTimeFromSlot(slot) {
   }
 }
 
+export default function AppointmentsPage() {
   const isAdmin = true;
 
   const [appointments, setAppointments] = useState([]);
@@ -76,7 +77,7 @@ function dateTimeFromSlot(slot) {
               time: a.time || (a.slot && a.slot.time) || "00:00 AM",
             },
             status: a.status || (a.payment && a.payment.status) || "Pending",
-            raw: a,
+            raw: a, // keep original in case we need it
           };
         });
         setAppointments(items);
@@ -211,8 +212,6 @@ function dateTimeFromSlot(slot) {
       }
     }
   }
-
-              return (
                 <div
                   key={a.id}
                   style={{
@@ -222,6 +221,12 @@ function dateTimeFromSlot(slot) {
                   }}
                   className={pageStyles.card}
                 >
+                  <div className={pageStyles.cardHeader}>
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className={pageStyles.cardTitle}>
+                          {a.patientName}
+                        </h3>
 
                         <div className={pageStyles.patientInfo}>
                           <span>{a.age ? `${a.age} yrs` : ""}</span>
@@ -230,3 +235,63 @@ function dateTimeFromSlot(slot) {
                           <span className="hidden md:inline"> : </span>
                           <span className=" max-w-[120px]">{a.mobile}</span>
                         </div>
+                      </div>
+
+                      <div className={pageStyles.doctorInfo}>
+                        {a.doctorName} :{" "}
+                        <span className={pageStyles.doctorSpeciality}>
+                          {a.speciality}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="text-right">
+                      <div className={pageStyles.feeLabel}>
+                        Fees
+                      </div>
+                      <div className={pageStyles.feeAmount}>
+                        <BadgeIndianRupee size={16} />
+                        <span>{a.fee}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-3 flex-wrap">
+                    <div className={pageStyles.slotContainer}>
+                      <Calendar size={14} className={pageStyles.slotIcon} />
+                      <span>
+                        {formatDateISO(a.slot.date)} — {a.slot.time}
+                      </span>
+                    </div>
+
+                    <div
+                      className={`${pageStyles.statusBadge} ${statusClasses(a.status)}`}
+                    >
+                      {a.status ? a.status.toUpperCase() : "PENDING"}
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      {isAdmin && (
+                        <button
+                          onClick={() => adminCancelAppointment(a.id)}
+                          title={
+                            isDisabled
+                              ? isCompleted
+                                ? "Cannot cancel a completed appointment"
+                                : "Already cancelled"
+                              : "Admin Cancel (mark as cancelled)"
+                          }
+                          disabled={isDisabled}
+                          aria-disabled={isDisabled}
+                          className={pageStyles.cancelButton(isDisabled, isCompleted)}
+                        >
+                          {isDisabled
+                            ? isCompleted
+                              ? "Completed"
+                              : "Admin Cancelled"
+                            : "Admin Cancel"}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
