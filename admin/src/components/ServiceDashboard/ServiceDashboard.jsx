@@ -228,6 +228,24 @@ export default function ServiceDashboard({ services: servicesProp = null }) {
   }
 
 
+  <div className={serviceDashboardStyles.table.headerMd}>
+            <div className={serviceDashboardStyles.table.headerText}>Service</div>
+            <div className={serviceDashboardStyles.table.headerText}>Appointments</div>
+            <div className={serviceDashboardStyles.table.headerText}>Completed</div>
+            <div className={serviceDashboardStyles.table.headerText}>Canceled</div>
+            <div className={serviceDashboardStyles.table.headerText}>Earning</div>
+          </div>
+
+      <div className={serviceDashboardStyles.table.headerLg}>
+            <div className="col-span-5">Service</div>
+            <div className="col-span-2">Price</div>
+            <div className={serviceDashboardStyles.table.headerTextLg(1)}>Appointments</div>
+            <div className={serviceDashboardStyles.table.headerTextLg(1)}>Completed</div>
+            <div className={serviceDashboardStyles.table.headerTextLg(1)}>Canceled</div>
+            <div className="col-span-2 text-right">Earning</div>
+          </div>
+  
+
                     <div className={serviceDashboardStyles.table.tabletView}>
                       <div className="flex items-center gap-3">
                         <div

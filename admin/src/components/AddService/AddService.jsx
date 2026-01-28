@@ -357,6 +357,61 @@
                 </div>
               )}
              
+  {/* right column - main fields */}
+          <div className="lg:col-span-2 md:col-span-1 col-span-1 space-y-6">
+            <div className={addServiceStyles.grids.formFields}>
+              <div>
+                <label className={addServiceStyles.labels.standard}>
+                  Service name
+                </label>
+                <input
+                  value={serviceName}
+                  onChange={(e) => setServiceName(e.target.value)}
+                  placeholder="e.g. General Consultation"
+                  className={addServiceStyles.formFields.input(errors.serviceName)}
+                />
+              </div>
+
+              <div>
+                <label className={addServiceStyles.labels.standard}>
+                  Price
+                </label>
+                <input
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  placeholder="₹ 499"
+                  className={addServiceStyles.formFields.input(errors.price)}
+                  inputMode="numeric"
+                />
+
+                <div className="mt-3">
+                  <label className={addServiceStyles.labels.standard}>
+                    Availability
+                  </label>
+                  <select
+                    value={availability}
+                    onChange={(e) => setAvailability(e.target.value)}
+                    className={addServiceStyles.formFields.select}
+                  >
+                    <option value="available">Available</option>
+                    <option value="unavailable">Unavailable</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label className={addServiceStyles.labels.standard}>
+                About this service
+              </label>
+              <textarea
+                value={about}
+                onChange={(e) => setAbout(e.target.value)}
+                placeholder="Short description"
+                rows={4}
+                className={addServiceStyles.formFields.textarea(errors.about)}
+              />
+            </div>
 
             {/* instructions */}
             <div>
@@ -569,3 +624,4 @@
                 </div>
               </div>
             </div>
+          </div>
