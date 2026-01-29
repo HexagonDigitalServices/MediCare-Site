@@ -57,13 +57,11 @@ const socialLinks = [
 
   {/* Newsletter form */}
   <div className={footerStyles.newsletterForm}>
-    {/* Mobile newsletter */}
     <div className={footerStyles.mobileNewsletterContainer}>
       <input
         type="email"
         placeholder="Enter your email"
         className={footerStyles.emailInput}
-        aria-label="Email"
       />
       <button className={footerStyles.mobileSubscribeButton}>
         <Send className={footerStyles.mobileButtonIcon} />
@@ -77,7 +75,6 @@ const socialLinks = [
         type="email"
         placeholder="Enter your email"
         className={footerStyles.desktopEmailInput}
-        aria-label="Email"
       />
       <button className={footerStyles.desktopSubscribeButton}>
         <Send className={footerStyles.desktopButtonIcon} />
@@ -94,7 +91,6 @@ const socialLinks = [
           target="_blank"
           rel="noopener noreferrer"
           className={footerStyles.socialLink}
-          aria-label={name}
           style={{ animationDelay: `${index * 120}ms` }}
         >
           <div className={footerStyles.socialIconBackground} />
