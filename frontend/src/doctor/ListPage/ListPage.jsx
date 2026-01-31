@@ -465,3 +465,16 @@ function RescheduleButton({ appointment, onReschedule }) {
               <option value="cancelled">Cancelled</option>
               <option value="rescheduled">Rescheduled</option>
             </select>
+
+
+    <div className={listPageStyles.dateTimeSection}>
+                  <div className={listPageStyles.dateTimeContainer}>
+                    <Calendar className={listPageStyles.calendarIcon} />
+                    <span className={listPageStyles.dateText}>
+                      {formatDate(a.date)}
+                    </span>
+                    <span className=" sm:inline">:</span>
+                    <span>{formatTimeAMPM(a.time)}</span>
+                  </div>
+                  <div className={listPageStyles.feeText}>₹{a.fee}</div>
+                </div>
