@@ -449,5 +449,46 @@ const StatusBadge = ({ itemStatus }) => {
   }, [serviceAppts]);
 
 
-                  src={srv.image || "/placeholder-service.png"}
+                    src={item.image || "/placeholder-doctor.png"}
    
+
+  <div className={appointmentPageStyles.serviceGrid}>
+          {serviceData.map((srv) => (
+            <div key={srv.id} className={cardStyles.serviceCard}>
+              <div className={cardStyles.serviceImageContainer}>
+                <img
+                  src={srv.image || "/placeholder-service.png"}
+                  alt={srv.name}
+                  className={cardStyles.image}
+                  loading="lazy"
+                />
+              </div>
+
+              <h3 className={cardStyles.serviceName}>{srv.name}</h3>
+
+              <p className={cardStyles.price}>₹{srv.price}</p>
+
+              <p className={cardStyles.serviceDateContainer}>
+                <CalendarDays className={iconSize.medium} /> {srv.date}
+              </p>
+
+              <p className={cardStyles.serviceTimeContainer}>
+                <Clock className={iconSize.medium} /> {srv.time}
+              </p>
+
+              <div className={cardStyles.badgesContainer}>
+                <PaymentBadge payment={srv.payment} />
+                <StatusBadge itemStatus={srv.status} />
+              </div>
+
+              {srv.status === "Rescheduled" && srv.rescheduledTo ? (
+                <div className={cardStyles.serviceRescheduledText}>
+                  Rescheduled to{" "}
+                  <span className={cardStyles.rescheduledSpan}>
+                    {srv.rescheduledTo.date} : {srv.rescheduledTo.time}
+                  </span>
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
