@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+const ScrollButton = () => {
+  const [visible, setVisible] = useState(false);
 
-function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    const handleScroll = () => setVisible(window.scrollY > 200);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <button
+      onClick={scrollTop}
+      className={`fixed right-4 bottom-6 z-50 w-11 h-11 rounded-full flex items-center justify-center 
+      bg-emerald-600 text-white shadow-lg transition-all duration-300 
+      ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"} 
+      hover:scale-110 hover:shadow-xl`}
+      title="Go to top"
+    >
+      <CircleChevronUp size={22} />
+    </button>
+  );
+};
 
-export default App
+  useEffect(() => {
+    document.body.style.overflowX = "hidden";
+    document.documentElement.style.overflowX = "hidden";
+    return () => {
+      document.body.style.overflowX = "auto";
+      document.documentElement.style.overflowX = "auto";
+    };
+  }, []);
